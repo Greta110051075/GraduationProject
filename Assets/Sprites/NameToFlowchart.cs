@@ -11,6 +11,7 @@ public class NameToFlowchart : MonoBehaviour
     public Flowchart gameFlowchart;
     public Flowchart gameCH2Flowchart;
     public Flowchart gameCH3Flowchart;
+    public Flowchart missionFlowchart;
     public string variableName = "PlayerName";
 
     private void Start()
@@ -25,5 +26,6 @@ public class NameToFlowchart : MonoBehaviour
         gameFlowchart.SetStringVariable(variableName, inputText); // 將輸入的文字設定到指定的 String Variable
         gameCH2Flowchart.SetStringVariable(variableName, inputText);
         gameCH3Flowchart.SetStringVariable(variableName, inputText);
+        missionFlowchart.SetStringVariable(variableName, inputText);
     }
 }
