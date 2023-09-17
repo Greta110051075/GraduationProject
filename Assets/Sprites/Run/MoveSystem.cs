@@ -7,6 +7,7 @@ public class MoveSystem : MonoBehaviour
     public  Transform movePoint;
 
     [Header("左右速度")]
+    [SerializeField, Range(10, 0)]
     private  float speedHoruzontal =10f;
 
     [Header("速度")]
@@ -17,16 +18,18 @@ public class MoveSystem : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
 
+        h = Mathf.Clamp(h, -26, 18);
+
         transform.Translate(speedHoruzontal * Time.deltaTime * h, speedVertical*Time.deltaTime, 0);
 
-        if (transform.position.x >= 13)
-        {
-            transform.position = new Vector3(speedHoruzontal * Time.deltaTime* 13, speedVertical * Time.deltaTime, 0);
-        }
-        if (transform.position.x <= -13)
-        {
-            transform.position = new Vector3(speedHoruzontal * Time.deltaTime * -13, speedVertical * Time.deltaTime, 0);
-        }
+        //if (transform.position.x >= 13)
+        //{
+        //    transform.position = new Vector3(speedHoruzontal * Time.deltaTime* 13, speedVertical * Time.deltaTime, 0);
+        //}
+        //if (transform.position.x <= -21)
+        //{
+        //    transform.position = new Vector3(speedHoruzontal * Time.deltaTime * -21, speedVertical * Time.deltaTime, 0);
+        //}
 
 
     }
