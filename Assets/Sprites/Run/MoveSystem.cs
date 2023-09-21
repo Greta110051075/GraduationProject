@@ -17,15 +17,19 @@ public class MoveSystem : MonoBehaviour
     private void Update()
     {
         float h = Input.GetAxis("Horizontal");
-      
+        float targetY = speedVertical * Time.deltaTime;
 
         transform.Translate(speedHoruzontal * Time.deltaTime * h, speedVertical * Time.deltaTime, 0);
+        
+        if (transform.position.x > 18)
+        {
+            transform.position = new Vector3(18, transform.position.y, 0);
+        }
 
-
-
-
-
-
+        if (transform.position.x < -21)
+        {
+            transform.position = new Vector3(-21, transform.position.y, 0);
+        }
     }
 }
 
