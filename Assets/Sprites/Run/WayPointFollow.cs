@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class WayPointFollow : MonoBehaviour
 {
-    public UnityStandardAssets.Utility.WaypointCircuit circuit; //©w¸q¤@­Ó·sªºÅÜ¼Æ¸ô®|
-    public int currentWP = 0; //©ñ¦b°}¦C¤¤§@¬°«ü¼Ğªº¼Æ¦rÅÜ¼Æ
+    public UnityStandardAssets.Utility.WaypointCircuit circuit; //å®šç¾©ä¸€å€‹æ–°çš„è®Šæ•¸è·¯å¾‘
+    public int currentWP = 0; //æ”¾åœ¨é™£åˆ—ä¸­ä½œç‚ºæŒ‡æ¨™çš„æ•¸å­—è®Šæ•¸
 
     public float speed = 1; 
     public float closePoint = 0.5f;
@@ -23,14 +23,14 @@ public class WayPointFollow : MonoBehaviour
 
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
 
-        if (direction.magnitude < closePoint) //¨C·í±µÄ²¨ì¯èÂI¡A¾É¯è°}¦CÅÜ¼Æ«ü¼Ğ´N·|¸õ©¹¤U¤@½X
+        if (direction.magnitude < closePoint) //æ¯ç•¶æ¥è§¸åˆ°èˆªé»ï¼Œå°èˆªé™£åˆ—è®Šæ•¸æŒ‡æ¨™å°±æœƒè·³å¾€ä¸‹ä¸€ç¢¼
         {
             currentWP++;
             if(currentWP >= circuit.Waypoints.Length)
             {
-                currentWP = 0; //±µÄ²¨ì©Ò¦³ÅÜ¼Æ«á¡A«ü¼Ğ·|«ì´_¬°0
+                currentWP = 0; //æ¥è§¸åˆ°æ‰€æœ‰è®Šæ•¸å¾Œï¼ŒæŒ‡æ¨™æœƒæ¢å¾©ç‚º0
             }
         }
-        this.transform.Translate(0, 0, speed * Time.deltaTime);//ª«¥ó¦V«e²¾°Ê¤è¦¡
+        this.transform.Translate(0, speed * Time.deltaTime, 0);//ç‰©ä»¶å‘å‰ç§»å‹•æ–¹å¼
     }
 }
