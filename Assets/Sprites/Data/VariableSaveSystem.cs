@@ -1,4 +1,4 @@
-using Fungus;
+ï»¿using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +14,8 @@ public class VariableSaveSystem : MonoBehaviour
 
     private void Update()
     {
-        maleFavor.text = gameFlowchart.GetIntegerVariable("ÃC«ØÂE").ToString();
-        femaleFavor.text = gameFlowchart.GetIntegerVariable("·¨ªÛ§±").ToString();
+        maleFavor.text = gameFlowchart.GetIntegerVariable("é¡å»ºé´»").ToString();
+        femaleFavor.text = gameFlowchart.GetIntegerVariable("æ¥ŠèŠå¦¤").ToString();
 
         int newMaleFavor;
         int newFemaleFavor;
@@ -23,8 +23,8 @@ public class VariableSaveSystem : MonoBehaviour
 
     public void IncreaseValue()
     {
-        IntegerVariable maleVariable = gameFlowchart.GetVariable<IntegerVariable>("ÃC«ØÂE");
-        IntegerVariable femaleVariable = gameFlowchart.GetVariable<IntegerVariable>("·¨ªÛ§±");
+        IntegerVariable maleVariable = gameFlowchart.GetVariable<IntegerVariable>("é¡å»ºé´»");
+        IntegerVariable femaleVariable = gameFlowchart.GetVariable<IntegerVariable>("æ¥ŠèŠå¦¤");
 
         int maleCurrentValue = maleVariable.Value;
         int femaleCurrentValue = femaleVariable.Value;
