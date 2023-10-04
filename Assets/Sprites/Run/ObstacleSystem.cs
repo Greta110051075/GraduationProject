@@ -11,49 +11,37 @@ public class ObstacleSystem : MonoBehaviour
     public int right;
 
     [SerializeField, Header("障礙物")]
-    public GameObject[] Obstacle;
+    public GameObject[] ObstaclePrefabs;
 
-    [SerializeField, Header("障礙物數量")]
-    public int a, b;
+    [SerializeField, Header("障礙物數量範圍")]
+    public int minObstacles;
+    public int maxObstacles;
+
+    [SerializeField, Header("Y軸選轉角度")]
+    public int r;
 
     public Transform Maker;
 
-    private int j;
-    private int AmountObstacle;
-    private List<Vector2> obstaclePositions;
-
-
     void Start()
     {
-        ObstacleRandom();
-        obstaclePositions = new List<Vector2>();
+        GenerateObstacles();
     }
 
-    private void ObstacleRandom()
+    private void GenerateObstacles()
     {
-        AmountObstacle = Random.Range(a, b);
+        int obstacleCount = Random.Range(minObstacles, maxObstacles + 1);
 
-        for (int i = AmountObstacle; i >= 0; i--)
-
-            Instantiate(Obstacle[j], new Vector2(Random.Range(right, left), Random.Range(up, down)), Quaternion.Euler(0, 0, 90), Maker);
-
-
-        for (int i = AmountObstacle; i >= 0; i--)
-
-            Instantiate(Obstacle[j + 1], new Vector2(Random.Range(right, left), Random.Range(up, down)), Quaternion.identity, Maker);
-    }
-
-    bool IsOverlapping(Vector2 position)
-    {
-        for (int i = 0; i < obstaclePositions.Count; i++)
+        for (int i = 0; i < obstacleCount; i++)
         {
-            if (Vector2.Distance(position, obstaclePositions[i]) < 1.0f)
-            {
-                return true;
-            }
+            int randomObstacleIndex = Random.Range(0, ObstaclePrefabs.Length);
+            Vector3 randomPosition = new Vector3(Random.Range(left, right), 0, Random.Range(down, up)); // Y 座標設置為 0，確保生成在 XZ 平面上
 
+            // 隨機指定 Y 軸旋轉角度
+            Quaternion randomRotation = Quaternion.Euler(90, r, 0);
+
+            GameObject newObstacle = Instantiate(ObstaclePrefabs[randomObstacleIndex], randomPosition, randomRotation);
+            newObstacle.transform.SetParent(Maker);
         }
-        return false;
-
     }
 }
+
