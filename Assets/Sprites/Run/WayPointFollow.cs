@@ -8,15 +8,15 @@ public class WayPointFollow : MonoBehaviour
     public UnityStandardAssets.Utility.WaypointCircuit circuit; //定義一個新的變數路徑
     public int currentWP = 0; //放在陣列中作為指標的數字變數
 
-    public float speed = 1; 
+    public float speed = 5; 
     public float closePoint = 0.5f;
-    public float rotSpeed;
+    public float rotSpeed = 3;
 
     void Update()
     {
         if (circuit.Waypoints.Length == 0) return;
 
-        Vector3 lookAtGoal = new Vector3(circuit.Waypoints[currentWP].transform.position.x, this.transform.position.y, circuit.Waypoints[currentWP].transform.position.z); 
+        Vector3 lookAtGoal = new Vector3(circuit.Waypoints[currentWP].transform.position.x, circuit.Waypoints[currentWP].transform.position.y, this.transform.position.z); 
 
         Vector3 direction = lookAtGoal - this.transform.position;
         Vector3 directVertical = lookAtGoal - circuit.Waypoints[currentWP].transform.position;

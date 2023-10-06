@@ -15,7 +15,7 @@ public class CarSystem1 : MonoBehaviour
 
     private void Awake()
     {
-        Quaternion randomRotation = Quaternion.Euler(90, 0, 0);
+        //Quaternion randomRotation = Quaternion.Euler(90, 0, 0);
         InvokeRepeating("CarRandom", Ins_Time, Ins_Time);        
     }
    
