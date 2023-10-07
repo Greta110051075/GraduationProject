@@ -15,7 +15,6 @@ public class CarSystem1 : MonoBehaviour
 
     private void Awake()
     {
-        //Quaternion randomRotation = Quaternion.Euler(90, 0, 0);
         InvokeRepeating("CarRandom", Ins_Time, Ins_Time);        
     }
    
@@ -27,6 +26,5 @@ public class CarSystem1 : MonoBehaviour
 
         Instantiate(carPrefab[a_Index], points.transform.position, carPrefab[a_Index].transform.rotation);
 
-        Quaternion randomRotation = Quaternion.Euler(90, 0, 0);
     }
 }
