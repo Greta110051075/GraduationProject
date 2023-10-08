@@ -25,9 +25,7 @@ public class WayPointFollow : MonoBehaviour
         if (circuit.Waypoints.Length == 0) return;
 
         //面像與目標的相關設定
-        Vector3 lookAtGoal = new Vector3(circuit.Waypoints[currentWP].transform.position.x,
-                                        this.transform.position.y,
-                                        circuit.Waypoints[currentWP].transform.position.z);
+        Vector3 lookAtGoal = new Vector3(circuit.Waypoints[currentWP].transform.position.x, this.transform.position.y,circuit.Waypoints[currentWP].transform.position.z);
 
         Vector3 direction = lookAtGoal - this.transform.position;
         Vector3 directionVertical = lookAtGoal - circuit.Waypoints[currentWP].transform.position;
@@ -45,7 +43,8 @@ public class WayPointFollow : MonoBehaviour
             currentWP++;
             if (currentWP >= circuit.Waypoints.Length)
             {
-                currentWP = 0;
+                gameObject.SetActive(false);
+
             }
         }
 
