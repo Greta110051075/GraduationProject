@@ -11,44 +11,42 @@ public class WayPointFollow : MonoBehaviour
     public UnityStandardAssets.Utility.WaypointCircuit circuit;
     public int currentWP = 0;
 
-    public float speed = 5; //控制車速
-    public float closePoint = 0f; //控制距離路徑點最近距離
-    public float rotSpeed = 2; //控制旋轉速度
+    public float speed = 5; // 控制移动速度
+    public float closePoint = 0.1f; // 控制与路径点的距离
+    public float rotSpeed = 2f; // 控制绕Z轴的旋转速度
 
- 
-    
     private void Update()
     {
-
-
-        //如果場景沒有任何 waypoint 則回傳 0 (不動作)
+        // 如果场景没有任何 waypoint 则返回（不执行任何操作）
         if (circuit.Waypoints.Length == 0) return;
 
-        //面像與目標的相關設定
-        Vector3 lookAtGoal = new Vector3(circuit.Waypoints[currentWP].transform.position.x, this.transform.position.y,circuit.Waypoints[currentWP].transform.position.z);
+        // 获取目标点的XZ坐标，忽略Y轴
+        Vector3 targetPosition = new Vector3(circuit.Waypoints[currentWP].transform.position.x, circuit.Waypoints[currentWP].transform.position.y, this.transform.position.z);
 
-        Vector3 direction = lookAtGoal - this.transform.position;
-        Vector3 directionVertical = lookAtGoal - circuit.Waypoints[currentWP].transform.position;
-        Debug.DrawRay(this.transform.position, direction, Color.green);
-        Debug.DrawRay(circuit.Waypoints[currentWP].transform.position, directionVertical, Color.yellow);
+        // 计算物体朝向目标的方向
+        Vector3 direction = targetPosition - this.transform.position;
 
-        //使用 Slerp 方法，使移動物件，旋轉朝向目標物
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
-                                                    Quaternion.LookRotation(direction),
-                                                    Time.deltaTime * rotSpeed);
+        //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+        this.transform.LookAt(targetPosition);
+        Vector3 currentRotation = this.transform.localRotation.eulerAngles;
+        currentRotation.x = 0;
+        currentRotation.y = 0;
+        this.transform.localRotation = Quaternion.Euler(currentRotation);
 
-        // 追擊目標時的 waypoint 陣列索引號變更&歸零(重複)
+        // 当接近路径点时，切换到下一个路径点
         if (direction.magnitude < closePoint)
         {
             currentWP++;
             if (currentWP >= circuit.Waypoints.Length)
             {
                 gameObject.SetActive(false);
-
             }
         }
 
-        this.transform.Translate(0, 0, speed * Time.deltaTime); //物件向前移動方式
+        // 沿着当前方向移动物体
+        this.transform.Translate(0, 0, speed * Time.deltaTime);
 
     }
+
 }
+
