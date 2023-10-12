@@ -49,11 +49,13 @@ public class ChangeSceneSystem : MonoBehaviour
     public void Character()
     {
         character.SetActive(true);
+        room.SetActive(false);
     }
 
     public void BackCharacter()
     {
-        character.SetActive(false);
+        character.SetActive(false); 
+        room.SetActive(true);
     }
 
     public void VoiceRegulate()
