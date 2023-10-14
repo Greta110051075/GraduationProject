@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VariableSaveSystem : MonoBehaviour
 {
     public Flowchart gameFlowchart;
-    public Text maleFavor;
-    public Text femaleFavor;
-    public Text money;
+    public TextMeshProUGUI maleFavor;
+    public TextMeshProUGUI femaleFavor;
+    public TextMeshProUGUI money;
     public int plusFavor;
 
 
