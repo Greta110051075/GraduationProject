@@ -20,9 +20,4 @@ public class MoneyController : MonoBehaviour
         moneyText.text = "" + money.ToString(); // 更新 UI 文本顯示
         Debug.Log("扣款成功");
     }
-
-    private void Update()
-    {
-       // moneyText.text ="" + money;
-    }
 }

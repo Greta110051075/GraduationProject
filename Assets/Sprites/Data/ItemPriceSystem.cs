@@ -6,8 +6,10 @@ using TMPro;
 
 public class ItemPriceSystem : MonoBehaviour
 {
+    public BuyPlusSystem buyPlusSystem;
     public MoneyController moneyController;
     public int itemPrice;
+    public int cartTotal = 0;
 
     public TextMeshProUGUI itemPriceText;
 
@@ -20,13 +22,17 @@ public class ItemPriceSystem : MonoBehaviour
     {
         if (moneyController.money >= itemPrice)
         {
-            moneyController.money -= itemPrice; // 購買商品，扣款
-            Debug.Log("購買成功");
+            buyPlusSystem.UpdateCartTotal(itemPrice); // 更新购物车的总金额
+            buyPlusSystem.plusMoney += itemPrice; // 购买商品
             moneyController.UpdateMoneyText(); // 更新 UI 文本
+            Debug.Log("購買成功");
         }
         else
         {
             Debug.Log("錢不夠！");
         }
+
+        cartTotal += itemPrice;
     }
+
 }
