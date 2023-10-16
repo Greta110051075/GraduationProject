@@ -1,23 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MoneyController : MonoBehaviour
 {
+    public Text numberText;
+    public int number = 0;
 
-    public TextMeshProUGUI moneyText; //顯示所持金的ui
-    public int money; //玩家所持金額
-
-    private void Start()
+    void Start()
     {
-        UpdateMoneyText(); // 在 Start 方法中初始化 UI 文本
+        UpdateNumberText();
     }
 
-    public void UpdateMoneyText()
+    public void IncreaseNumber()
     {
-        moneyText.text = "" + money.ToString(); // 更新 UI 文本顯示
-        Debug.Log("扣款成功");
+        number++;
+        UpdateNumberText();
+    }
+
+    void UpdateNumberText()
+    {
+        if (numberText != null)
+        {
+            numberText.text = "Number: " + number;
+        }
     }
 }
