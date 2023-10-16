@@ -1,0 +1,23 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "辣妹改.moc3",
+		"Textures": [
+			"辣妹改.1024/texture_00.png"
+		],
+		"Physics": "辣妹改.physics3.json",
+		"DisplayInfo": "辣妹改.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}
