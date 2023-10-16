@@ -1,0 +1,28 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "boy2.moc3",
+		"Textures": [
+			"boy2.4096/texture_00.png",
+			"boy2.4096/texture_01.png",
+			"boy2.4096/texture_02.png"
+		],
+		"Physics": "boy2.physics3.json",
+		"DisplayInfo": "boy2.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}
